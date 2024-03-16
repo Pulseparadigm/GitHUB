@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0A192F; /* Navy blue */
+    color: #CAD3E2; /* Light gray */
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Enable vertical scroll */
+}
+
+.table-responsive {
+    overflow-x: auto; /* Allows the table to scroll horizontally if needed */
+    margin: auto;
+    max-width: 600px; /* Matches the .container width for consistency */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #64FFDA; /* Teal border for a cohesive look */
+}
+
+th {
+    background-color: #112240; /* Darker shade for header background */
+    color: #64FFDA; /* Teal color for header text */
+}
+
+td a {
+    color: #64FFDA; /* Teal color for links to maintain theme consistency */
+    text-decoration: none; /* Removes underline from links */
+}
+
+td a:hover {
+    text-decoration: underline; /* Adds underline on hover for better user interaction feedback */
+}
+
+.link-container {
+    text-align: center; /* Centers the link for visual balance */
+    margin-top: 20px; /* Provides spacing from the table above */
+}
+
+a {
+    color: #64FFDA; /* Teal color for the link */
+    text-decoration: none; /* No underline initially */
+}
+
+a:hover {
+    text-decoration: underline; /* Underline on hover for clarity */
+}

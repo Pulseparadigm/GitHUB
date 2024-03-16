@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0A192F; /* Navy blue */
+    color: #CAD3E2; /* Light gray */
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Enable vertical scroll */
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background-color: #112240; /* Slightly darker navy blue for container background */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    color: #64FFDA; /* Teal for headings */
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: .5rem;
+    color: #64FFDA; /* Teal */
+    font-size: 1.2rem;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="submit"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px; /* Space between fields */
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+input[type="text"],
+input[type="password"] {
+    border: 1px solid #CAD3E2; /* Light gray border for input fields */
+    color: #CAD3E2; /* Light gray text */
+    background-color: #0A192F; /* Navy blue background for input fields */
+}
+
+input[type="submit"] {
+    border: none;
+    background-color: #64FFDA; /* Teal for submit button */
+    color: #0A192F; /* Navy blue text */
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #52e3d4; /* Slightly lighter teal on hover */
+}

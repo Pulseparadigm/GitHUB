@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0A192F;
+    color: #CAD3E2;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+}
+
+.carousel {
+    max-width: 600px; /* Increased width for a larger view */
+    margin: 50px auto; /* Increased top and bottom margin */
+    overflow: hidden;
+    border-radius: 15px; /* More pronounced border-radius for a softer look */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow for a deeper 3D effect */
+    padding: 10px; /* Padding around images */
+    background-color: #112240; /* Background color to blend with the site theme */
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-images img {
+    width: 100%;
+    flex: 0 0 auto;
+    border-radius: 15px; /* Consistent with the carousel's border-radius */
+    object-fit: cover; /* Ensure images cover the area well without stretching */
+}
+
+.container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+h1, h2 {
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #64FFDA;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #8892B0;
+}
+
+.user-form {
+    background-color: #112240;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+input[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #233554;
+    color: #FFFFFF;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #1B2A41;
+    transform: translateY(-3px);
+}

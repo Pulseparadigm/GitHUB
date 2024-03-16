@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0A192F;
+    color: #CAD3E2;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+}
+
+.form-container {
+    background-color: #112240;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.submission-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.submission-form input,
+.submission-form textarea {
+    width: calc(100% - 40px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #233554;
+    background-color: #0A192F;
+    color: #CAD3E2;
+    font-family: 'Roboto', sans-serif;
+}
+
+.save-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #233554;
+    color: #FFFFFF;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.save-button:hover {
+    background-color: #1B2A41;
+    transform: translateY(-3px);
+}
+
+.login-redirect {
+    text-align: center;
+    margin-top: 20px;
+    color: #8892B0;
+    font-size: 1rem;
+}
+
+.login-redirect a {
+    color: #64FFDA;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.login-redirect a:hover {
+    color: #88bfbf;
+}

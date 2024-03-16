@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Submission</title>
+    <link rel="stylesheet" href="/stat/doctorform.css">
+</head>
+<body>
+    <div class="form-wrapper">
+        <form method="POST" class="submission-form" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ nurse.as_p }}
+
+         {% for message in messages %}
+            {{message}}
+            {% endfor %}
+            <button type="submit" class="save-button btn btn-default">Save</button>
+        </form>
+    </div>
+    <div class="account-redirect">
+        <p>Already have an account? <a href="/Nurse/login">Click here to log in.</a></p>
+    </div>
+</body>
+</html>

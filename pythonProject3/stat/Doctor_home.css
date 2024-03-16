@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0A192F;
+    color: #CAD3E2;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+}
+
+.navbar {
+    background-color: #233554;
+    padding: 15px 20px;
+}
+
+.nav-links a {
+    color: #64FFDA;
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #8892B0;
+}
+
+.content {
+    padding: 20px;
+    text-align: center;
+}
+
+.data-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.data-item {
+    background-color: #112240;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: calc(50% - 20px); /* Adjust width for two items per row */
+    text-align: left;
+}
+
+.data-item span, .data-item img {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.data-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .data-item {
+        width: calc(100% - 20px); /* Full width for smaller screens */
+    }
+}

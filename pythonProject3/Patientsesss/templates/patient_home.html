@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Information</title>
+    <link rel="stylesheet" href="/stat/patient_home.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="/patient/Patient_Home_ShowDoc">Doctors</a></li>
+            <li><a href="/patient/Update">Update Information</a></li>
+            <li><a href="/patient/view_test">view TEST</a></li>
+
+        </ul>
+    </nav>
+
+    <div class="patient-data-container">
+        {% for data in patient_data %}
+        <div class="patient-record">
+            <p><strong>Registration Number:</strong> {{ data.0 }}</p>
+            <p><strong>Name:</strong> {{ data.1 }}</p>
+            <p><strong>Date of Birth:</strong> {{ data.2 }}</p>
+            <p><strong>Address:</strong> {{ data.3 }}</p>
+            <p><strong>Phone:</strong> {{ data.4 }}</p>
+            <p><strong>Medical History:</strong> {{ data.5 }}</p>
+            <p><a href="/patient/view_appointment/{{data.0}}">View Appointment</a></p>
+            
+
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

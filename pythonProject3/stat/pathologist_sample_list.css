@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0A192F; /* Navy blue */
+    color: #CAD3E2; /* Light gray */
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Enable vertical scroll */
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: #112240; /* Slightly darker navy blue for container background */
+    border-radius: 8px;
+}
+
+.table-responsive {
+    overflow-x: auto; /* Scrollable table on smaller screens */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px; /* Space above the table */
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #64FFDA; /* Teal border for cells */
+}
+
+th {
+    background-color: #112240; /* Dark navy blue for table headers */
+    color: #64FFDA; /* Teal text color for headers */
+}
+
+input[type="submit"] {
+    width: auto;
+    padding: 10px 20px;
+    margin-top: 10px; /* Space above submit button */
+    border-radius: 4px;
+    font-size: 1rem;
+    border: none;
+    background-color: #64FFDA; /* Teal for submit button */
+    color: #0A192F; /* Navy blue text */
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px; /* Space to the right of the checkbox */
+}
+
+td a {
+    color: #64FFDA; /* Teal color for links */
+    text-decoration: none; /* No underline for links */
+}
+
+td a:hover {
+    text-decoration: underline; /* Underline on hover for better feedback */
+}

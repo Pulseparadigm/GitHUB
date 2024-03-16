@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0A192F; /* Dark navy blue background for the whole page */
+    color: #CAD3E2; /* Light grey text color for better readability */
+    font-family: 'Roboto', sans-serif; /* Main font for the body */
+    line-height: 1.6; /* Increased line height for better text readability */
+    padding: 20px; /* Padding around the content of the entire body */
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+    overflow-y: auto; /* Enables vertical scrolling if the content overflows */
+}
+
+.container {
+    max-width: 600px; /* Maximum width of the container to center the content */
+    margin: auto; /* Centers the container horizontally */
+    padding: 20px; /* Padding inside the container for spacing around the content */
+    background-color: #112240; /* Slightly lighter navy blue background for the container */
+    border-radius: 8px; /* Rounded corners for the container */
+}
+
+.table-responsive table {
+    width: 100%; /* Table width to fill its container */
+    border-collapse: collapse; /* Collapses table borders into a single border */
+    margin-top: 20px; /* Margin at the top for spacing before the table starts */
+}
+
+th, td {
+    text-align: left; /* Aligns table header and cell content to the left */
+    padding: 8px; /* Padding inside each table cell for spacing */
+    border: 1px solid #64FFDA; /* Teal colored border for each cell */
+}
+
+th {
+    background-color: #112240; /* Background color for table headers */
+    color: #64FFDA; /* Teal color for header text for contrast */
+}
+
+input[type="submit"] {
+    width: auto; /* Allows the button to adjust its width based on its content */
+    border: none; /* Removes the border from the button */
+    background-color: #64FFDA; /* Teal background color for the button */
+    color: #0A192F; /* Dark navy blue text color for contrast */
+    cursor: pointer; /* Changes the cursor to a pointer to indicate it's clickable */
+    padding: 10px 15px; /* Padding inside the button for spacing around the text */
+    margin-top: 10px; /* Margin at the top for spacing above the button */
+    border-radius: 4px; /* Rounded corners for the button */
+    font-size: 1rem; /* Font size for the text inside the button */
+    display: block; /* Makes the button a block-level element */
+    margin: 10px auto; /* Centers the button horizontally with auto margins */
+    text-align: center; /* Ensures text within the button is centered */
+}
+
+h1, h2 {
+    font-family: 'Poppins', sans-serif; /* Heading font for a bit more personality */
+    color: #64FFDA; /* Teal color for heading texts for consistency with the theme */
+    margin-bottom: 20px; /* Bottom margin for spacing after headings */
+}
+
+a {
+    color: #64FFDA; /* Teal color for link text for consistency with the theme */
+    text-decoration: none; /* Removes underline from links */
+}
+
+a:hover {
+    text-decoration: underline; /* Adds underline to links on hover for better user feedback */
+}

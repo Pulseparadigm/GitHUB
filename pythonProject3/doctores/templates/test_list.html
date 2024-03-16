@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Management</title>
+    <link rel="stylesheet" href="/stat/test_list.css">
+</head>
+<body>
+    <p>Hello,</p>
+
+   
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Test ID</th>
+                <th>Test Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if patient_id >= 100 %}
+                {% for data in test_to_remove %}
+                    <tr>
+                        <td>{{ data.0 }}</td>
+                        <td>{{ data.1 }}</td>
+                        <td><a href="/doctor/test/removetest/{{ data.2 }}">Remove Test</a></td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Test ID</th>
+                <th>Test Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in test %}
+                <tr>
+                    <td>{{ data.0 }}</td>
+                    <td>{{ data.1 }}</td>
+                    {% if patient_id >= 100 %}
+                        <td><a href="/doctor/test/addtest/{{ data.2 }}">Add Test</a></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

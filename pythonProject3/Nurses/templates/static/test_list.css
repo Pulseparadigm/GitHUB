@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0A192F;
+    color: #CAD3E2;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    text-align: center;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #112240;
+}
+
+th, td {
+    text-align: left;
+    padding: 12px;
+    border: 1px solid #233554;
+}
+
+th {
+    background-color: #112240;
+    color: #64FFDA;
+    font-family: 'Poppins', sans-serif;
+}
+
+tr:nth-child(even) {
+    background-color: #0A192F;
+}
+
+tr:hover {
+    background-color: #233554;
+}
+
+a {
+    color: #64FFDA;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #88bfbf;
+}
+
+p, h1 {
+    margin: 20px 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #64FFDA;
+    margin-bottom: 30px;
+}
+
+.input[type="submit"] {
+    display: block;
+    width: auto;
+    padding: 10px 20px;
+    margin: 20px auto;
+    border: none;
+    border-radius: 5px;
+    background-color: #233554;
+    color: #FFFFFF;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.input[type="submit"]:hover {
+    background-color: #1B2A41;
+    transform: translateY(-3px);
+}

@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0A192F; /* Navy blue */
+    color: #CAD3E2; /* Light gray */
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Enable vertical scroll */
+}
+
+.form-container {
+    max-width: 600px;
+    margin: auto;
+    background-color: #112240; /* Slightly darker navy blue for container background */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.post-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-content p, .form-messages p {
+    color: #CAD3E2; /* Light gray for text */
+    margin-bottom: .5rem; /* Space between form elements and messages */
+}
+
+.save-button {
+    width: auto;
+    padding: 10px 20px;
+    margin-top: 10px; /* Space above the button */
+    border-radius: 4px;
+    font-size: 1rem;
+    border: none;
+    background-color: #64FFDA; /* Teal for the button */
+    color: #0A192F; /* Navy blue text */
+    cursor: pointer;
+}
+
+.registration-prompt {
+    color: #CAD3E2; /* Light gray */
+    text-align: center; /* Centers the registration prompt */
+    margin-top: 20px; /* Space above the prompt */
+}
+
+.registration-prompt a {
+    color: #64FFDA; /* Teal color for links */
+    text-decoration: none; /* No underline for links */
+}
+
+.registration-prompt a:hover {
+    text-decoration: underline; /* Underline on hover for better feedback */
+}

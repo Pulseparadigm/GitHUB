@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0A192F; /* Navy blue */
+    color: #CAD3E2; /* Light gray */
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Enable vertical scroll */
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: #112240; /* Slightly darker navy blue for container background */
+    border-radius: 8px;
+}
+
+.post-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.save-button {
+    width: auto;
+    padding: 10px 20px;
+    margin-top: 10px; /* Space above the button */
+    border-radius: 4px;
+    font-size: 1rem;
+    border: none;
+    background-color: #64FFDA; /* Teal for the button */
+    color: #0A192F; /* Navy blue text */
+    cursor: pointer;
+}
+
+.login-redirect p {
+    color: #CAD3E2; /* Light gray */
+    font-size: 1rem;
+    margin-top: 20px; /* Space above the paragraph */
+}
+
+.login-redirect a {
+    color: #64FFDA; /* Teal color for links */
+    text-decoration: none; /* No underline for links */
+}
+
+.login-redirect a:hover {
+    text-decoration: underline; /* Underline on hover for better feedback */
+}
+
+.messages p {
+    background-color: #112240; /* Background color for messages */
+    color: #64FFDA; /* Teal color for message text */
+    padding: 10px; /* Padding around message text */
+    border-radius: 4px; /* Rounded corners for message boxes */
+    margin-top: 10px; /* Space above each message */
+}

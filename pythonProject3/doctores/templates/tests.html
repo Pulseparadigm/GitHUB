@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Information</title>
+    <link rel="stylesheet" href="/stat/tests.css">
+</head>
+<body>
+    <section>
+        <h2>Patient Details</h2>
+        <p><strong>Name:</strong> {{ patient_info.0.1 }}</p>
+        <p><strong>Date of Birth:</strong> {{ patient_info.0.2 }}</p>
+        <p><strong>Address:</strong> {{ patient_info.0.3 }}</p>
+        <p><strong>Phone:</strong> {{ patient_info.0.4 }}</p>
+        <p><strong>Medical History:</strong> {{ patient_info.0.5 }}</p>
+    </section>
+
+    <section>
+        <h2>Test Details</h2>
+        {% for test in patient_test %}
+            <p><strong>Test Name:</strong> {{ test.2 }}</p>
+            <p><strong>Date Taken:</strong> {{ test.3 }}</p>
+        {% endfor %}
+    </section>
+
+    <div class="update-tests">
+      <a href="test_list/{{patient_info.0.0}}">Update Tests</a>
+        <a href="see_report/{{patient_info.0.0}}">Report</a>
+  </div>
+  
+</body>
+</html>

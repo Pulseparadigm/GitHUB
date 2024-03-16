@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/stat/Appointments.css">
+</head>
+<body>
+
+   <h1>Show Appontments</h1>
+   <table border="'1">
+       <th><h2>Appointment Schedule</h2></th>
+        <th><h2>Name</h2></th>
+
+{% for appointment in appointments%}
+   <tr>
+<td><h3>{{appointment.0}}</h3></td>
+       <td><h3>{{appointment.1}}</h3></td>
+
+       </tr>
+{% endfor %}
+   </table>
+
+</body>
+</html>

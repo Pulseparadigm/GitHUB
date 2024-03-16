@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/stat/report_generation.css">
+</head>
+<body>
+
+   {% if report_generation|length > 0 %}
+
+<form action="/pathologist/sample" method='POST'>
+    {% csrf_token %} <!-- CSRF token for security -->
+    <table border="1">
+        <tr>
+            <th>sample name</th>
+            <th>PATIENT NAME</th>
+
+            <th>ORDER</th>
+        </tr>
+        <h3>Select the number of Reports to Write</h3>
+        {% for data in sample %}
+            <tr>
+                <td>{{data.0}}</td> <!-- Display Test Type -->
+                <td>{{data.2}}</td> <!-- Display Test Name -->
+
+                <td>
+                    <input type="text" name="order_list" >
+
+                </td>
+                <td><input type="submit" value="Submit"></td><!-- Checkbox for selecting the row -->
+            </tr>
+        {% endfor %}
+
+
+    </table>
+   <!-- Submit button -->
+     {% else %}
+        <h1>NO SAMPLES TO CHECK</h1>
+    {% endif %}
+
+</form>
+
+</body>
+</html>

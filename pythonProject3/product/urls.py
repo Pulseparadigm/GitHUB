@@ -1,0 +1,10 @@
+
+from . import views
+
+from django.urls import path
+urlpatterns=[
+    path('',views.index),
+
+    path('new',views.index1),
+    path('add',views.add,name="add")
+]

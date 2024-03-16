@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pathologist Data</title>
+    <link rel="stylesheet" href="/stat/pathologist_home.css"> <!-- Ensure the path to your CSS file is correct -->
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th><h2>Name</h2></th>
+                <th><h2>Email</h2></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in pathologist %}
+            <tr>
+                <td>{{ data.1 }}</td>
+                <td>{{ data.3 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <a href="sample"><h2>Sample List</h2></a>
+</body>
+</html>

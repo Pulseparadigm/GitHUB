@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/stat/Doctor_home.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-links">
+
+            <a href="/doctor/Show_Patients">Patients</a>
+           
+        </div>
+    </nav>
+    <div class="content">
+        <p>This is the home</p>
+        <div class="data-list">
+            {% for data in form %}
+                <div class="data-item">
+                    <span> <h3>Firstname: </h3>{{ data.1 }}</span>
+                    <span><h3>Lastname: </h3>{{ data.2 }}</span>
+                    <span><h3>Email: </h3>{{ data.3 }}</span>
+                    <img src="media/{{ data.4 }}" alt="Image can't load">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+</html>

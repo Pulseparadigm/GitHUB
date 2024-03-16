@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0A192F; /* Navy blue */
+    color: #CAD3E2; /* Light gray */
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Enable vertical scroll */
+}
+
+.navbar {
+    background-color: #112240; /* Slightly darker navy blue */
+    padding: 10px 20px;
+}
+
+.nav-links a {
+    color: #64FFDA; /* Teal color for links */
+    text-decoration: none;
+    margin-right: 15px; /* Space between links */
+    font-size: 1.2rem;
+}
+
+.nav-links a:hover {
+    text-decoration: underline; /* Underline on hover for better feedback */
+}
+
+.content {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+.nurse-info {
+    background-color: #112240; /* Slightly darker navy blue for the info card */
+    padding: 20px;
+    margin-bottom: 20px; /* Space between nurse info cards */
+    border-radius: 8px;
+}
+
+.nurse-info h2,
+.nurse-info p {
+    margin-bottom: 10px; /* Space between text lines */
+}
+
+.nurse-info a {
+    display: inline-block;
+    background-color: #64FFDA; /* Teal color for button-like links */
+    color: #0A192F; /* Navy blue text */
+    padding: 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-top: 10px; /* Space above the link */
+}
+
+.nurse-info a:hover {
+    background-color: #52e3d4; /* Lighter teal on hover */
+}

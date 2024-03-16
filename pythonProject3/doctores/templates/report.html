@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    patient name:{{report.0.0}}
+     <br> <br> <br> <br>
+     <br>
+
+
+
+  {% for data in report %}
+
+ <br>
+     <br>
+     <br>
+  sample name:{{data.1}}<br>
+    report :{{data.2}}<br>
+
+</head>
+<body>
+{% endfor %}
+</body>
+
+</html>

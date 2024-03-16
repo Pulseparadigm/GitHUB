@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0A192F;
+    color: #CAD3E2;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.form-container {
+    margin: auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+}
+
+.form-content, .form-messages {
+    margin-bottom: 20px;
+}
+
+p {
+    color: #CAD3E2;
+}
+
+.save-button {
+    display: block;
+    width: auto;
+    padding: 10px 20px;
+    margin: 10px auto;
+    border: none;
+    border-radius: 5px;
+    background-color: #64FFDA;
+    color: #0A192F;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.save-button:hover {
+    background-color: #52ECCD;
+    transform: translateY(-3px);
+}
+
+.registration-prompt {
+    margin-top: 20px;
+    color: #CAD3E2;
+}
+
+.registration-prompt a {
+    color: #64FFDA;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.registration-prompt a:hover {
+    color: #52ECCD;
+}

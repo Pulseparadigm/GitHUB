@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submission Form</title>
+    <link rel="stylesheet" href="/stat/doctorform.css">
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Submit Your Details</h2>
+        <form method="POST" class="submission-form" enctype="multipart/form-data">
+            
+            {% csrf_token %}
+            
+            {{ form.as_p }}
+            {% for message in messages %}
+            {{message}}
+            {% endfor %}
+            <button type="submit" class="save-button">Save</button>
+        </form>
+    </div>
+
+    <div class="login-redirect">
+        <p>Already registered? <a href="/doctor/login">Log in here.</a></p>
+    </div>
+
+</body>
+</html>

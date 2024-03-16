@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0A192F;
+    color: #CAD3E2;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    text-align: center; /* Centers text globally */
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 50px auto; /* Centers the form container block and adds vertical space */
+    padding: 40px;
+    background-color: #112240;
+    border-radius: 10px;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    color: #64FFDA;
+    margin-bottom: 20px;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+    color: #CAD3E2;
+    margin-bottom: 30px; /* Adds more space above the submit button */
+}
+
+input[type="submit"] {
+    font-family: 'Poppins', sans-serif;
+    display: block;
+    width: 50%; /* Adjusts the button width to not span the entire container width */
+    padding: 15px; /* Increases padding for better touch target size */
+    margin: 0 auto; /* Centers the button within the form-container */
+    border: none;
+    border-radius: 5px;
+    background-color: #233554;
+    color: #FFFFFF;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #1B2A41;
+    transform: translateY(-3px);
+}

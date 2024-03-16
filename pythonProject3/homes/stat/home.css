@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0A192F; /* Navy blue */
+    color: #CAD3E2; /* Light gray */
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Enable vertical scroll */
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: #112240; /* Slightly darker navy blue for container background */
+    border-radius: 8px;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    color: #64FFDA; /* Teal color for headings */
+    margin-bottom: 20px;
+}
+
+.user-form {
+    margin-bottom: 20px;
+}
+
+.user-form h2 {
+    color: #64FFDA; /* Teal color to match the theme */
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="submit"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px; /* Add space between the fields */
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #112240; /* Dark navy blue for input background */
+    color: #CAD3E2; /* Light gray for text */
+    border: 1px solid #CAD3E2; /* Border color */
+}
+
+input[type="submit"] {
+    border: none;
+    background-color: #64FFDA; /* Teal for the button */
+    color: #0A192F; /* Navy blue text */
+    cursor: pointer;
+}
+
+.registration-prompt {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.registration-prompt a {
+    color: #64FFDA; /* Teal color for links */
+    text-decoration: none; /* Remove underline from links */
+}
+
+.registration-prompt a:hover {
+    text-decoration: underline; /* Add underline on hover for better user feedback */
+}
+carousel {
+    overflow: hidden; /* Ensures only a part of the flex container (and thus a single image) is shown */
+    width: 10%; /* Adjust the width as needed for your layout */
+    max-width: 60px; /* Ensures the carousel does not exceed this width */
+    height: auto; /* Height can adjust to maintain the image aspect ratio */
+    margin: 20px auto; /* Centers the carousel horizontally */
+    border-radius: 8px; /* Adds rounded corners to the carousel */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for depth */
+    position: relative; /* For positioning navigation buttons if needed */
+}
+
+.carousel-images {
+    display: flex; /* Lines up the images horizontally */
+    transition: transform 0.5s ease; /* Smooth transition for sliding effect */
+    min-width: 10%; /* Ensures the container's minimum width fits at least one image entirely */
+}
+
+.carousel-images img {
+    /* Flex children (images) should not grow or shrink but should align at the center */
+    flex: 0 0 auto;
+    width: 10%; /* Each image stretches to fit the carousel width */
+    height: 30px; /* Fixed height to control the carousel size */
+    object-fit: cover; /* Covers the area of the container without losing aspect ratio */
+}

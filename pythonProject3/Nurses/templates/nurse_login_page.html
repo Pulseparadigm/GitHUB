@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Page</title>
+    <link rel="stylesheet" href="/stat/nurse_login_page.css">
+</head>
+<body>
+    <form method="POST" class="post-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ nurse.as_p }}
+
+         {% for message in messages %}
+            {{message}}
+            {% endfor %}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+    <p>Don't have an account? <a href="/Nurse/">Click here to register.</a></p>
+</body>
+</html>

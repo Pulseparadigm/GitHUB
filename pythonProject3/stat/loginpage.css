@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0A192F; /* Navy Blue */
+    color: #CAD3E2; /* Light Grey for text */
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    color: #64FFDA; /* Teal for headings */
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: .5rem;
+    color: #64FFDA; 
+    font-size: 1.2rem;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #CAD3E2;
+    border-radius: 4px;
+    background-color: #112240; 
+    color: #CAD3E2; 
+    font-size: 1rem;
+}
+
+input[type="submit"] {
+    width: auto;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #64FFDA; /* Teal for submit button */
+    cursor: pointer;
+}
+
+.registration-prompt a {
+    color: #64FFDA; /* Teal for registration prompt link */
+    text-decoration: none; /* Optional: removes underline from links */
+}

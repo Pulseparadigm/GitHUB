@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select a Doctor</title>
+    <link rel="stylesheet" href="/stat/Patient_Home_ShowDoc.css">
+</head>
+<body>
+
+<form action="filter" method="post">
+    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+    <label for="name">Enter the Doctor's Name:</label><br>
+    <input type="text" id="name" name="name" placeholder="Doctor's Name"><br>
+    <input type="submit" value="Search">
+</form>
+
+<div class="table-responsive">
+    <table border="1">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email Address</th>
+          <th>Schedule Appointment</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for doc in member %}
+        <tr>
+            <td>{{ doc.1 }}</td>
+            <td>{{ doc.2 }}</td>
+            <td>{{ doc.3 }}</td>
+            <td>{{ doc.4 }}</td>
+            <td><a href="/patient/Appointments/{{ doc.0 }}">Schedule Appointment</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0A192F;
+    color: #CAD3E2;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px auto;
+    background-color: #112240;
+    color: #CAD3E2;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #233554;
+}
+
+th {
+    background-color: #112240;
+    color: #64FFDA;
+}
+
+tr:nth-child(even) {
+    background-color: #0A192F;
+}
+
+tr:hover {
+    background-color: #233554;
+}
+
+input[type="submit"] {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #64FFDA;
+    color: #0A192F;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+input[type="submit"]:hover {
+    background-color: #52ECCD;
+    transform: translateY(-3px);
+}
+
+input[type="checkbox"] {
+    accent-color: #64FFDA;
+}
+
+a {
+    color: #64FFDA;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+a:hover {
+    color: #88bfbf;
+}

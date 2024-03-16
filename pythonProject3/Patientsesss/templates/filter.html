@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/stat/filter.css">
+</head>
+<body>
+
+<div class="bg-image"></div>
+
+<div class="content">
+    <table border='1'>
+        <tr>
+            <th>name</th>
+            <th>dob</th>
+            <th>address</th>
+            <th>phone</th>
+            <th>medical_history</th>
+        </tr>
+        {% for data in member %}
+            {{data.0}}
+            <tr>
+                <td>{{data.1}}</td>
+                <td>{{data.2}}</td>
+                <td>{{data.3}}</td>
+                <td>{{data.4}}</td>
+                <td>{{data.5}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+</body>
+</html>

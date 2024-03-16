@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0A192F; /* Navy blue */
+    color: #CAD3E2; /* Light gray */
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Enable vertical scroll */
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background-color: #112240; /* Slightly darker navy blue for container background */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.table-responsive {
+    overflow-x: auto; /* Allows for horizontal scrolling on smaller screens */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #64FFDA; /* Teal border for cells */
+}
+
+th {
+    background-color: #112240; /* Dark navy blue for header background */
+    color: #64FFDA; /* Teal text color for headers */
+}
+
+input[type="text"], input[type="submit"] {
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+input[type="text"] {
+    border: 1px solid #CAD3E2;
+    color: #CAD3E2; 
+    width: auto; /* Adjusts based on content */
+    background-color: #0A192F; /* Background color to match body */
+}
+
+input[type="submit"] {
+    border: none;
+    background-color: #64FFDA;
+    color: #0A192F;
+    cursor: pointer;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    color: #64FFDA;
+    margin-bottom: 20px;
+}

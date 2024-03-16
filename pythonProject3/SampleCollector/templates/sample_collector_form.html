@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submission Form</title>
+    <link rel="stylesheet" href="/stat/sample_collector_form.css">
+</head>
+<body>
+    <div class="container">
+        <form method="POST" class="post-form" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="messages">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+            <button type="submit" class="save-button">Save</button>
+        </form>
+        <div class="login-redirect">
+            <p>Already have an account? <a href="/SampleCollector/">Click here to log in.</a></p>
+        </div>
+    </div>
+</body>
+</html>

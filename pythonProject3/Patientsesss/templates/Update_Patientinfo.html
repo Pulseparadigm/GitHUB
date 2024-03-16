@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Registration</title>
+    <link rel="stylesheet" href="/stat/Update_Patientinfo.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Hello, Patient! Please complete your registration.</h1>
+        {% for data in data %}
+        <form action="Updated" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" value="{{data.1}}" placeholder="John Doe"><br>
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of Birth:</label>
+                <input type="text" id="dob" name="dob" value="{{data.2}}" placeholder="MM/DD/YYYY"><br>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" name="phone" value="{{data.4}}" placeholder="123-456-7890"><br>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" value="{{data.3}}" placeholder="1234 Main St"><br>
+            </div>
+
+            <div class="form-group">
+                <label for="medical_history">Medical History:</label>
+                <input type="text" id="medical_history" name="medical_history" value="{{data.5}}" placeholder="Any known allergies or conditions"><br>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" value="{{data.6}}" placeholder="Enter your password"><br>
+            </div>
+
+            <div class="form-group">
+                <label for="password2">Retype Your Password:</label>
+                <input type="password" id="password2" name="password2" value="{{data.6}}" placeholder="Retype your password"><br>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" class="submit-button" value="Submit">
+            </div>
+        </form>
+        {% endfor %}
+    </div>
+</body>
+</html>

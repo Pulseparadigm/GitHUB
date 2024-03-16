@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample Collection</title>
+    <link rel="stylesheet" href="/stat/sample_list.css">
+</head>
+<body>
+<div class="container">
+    {% if form|length > 0 %}
+    <form action="collect_sample" method='POST' class="table-responsive">
+        {% csrf_token %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Sample</th>
+                    <th>Address</th>
+                    <th>Select</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in form %}
+                <tr>
+                    <td>{{ data.0 }}</td>
+                    <td>{{ data.2 }}</td>
+                    <td>{{ data.1 }}</td>
+                    <td><input type="checkbox" name="sample" value="{{ data.3 }} {{ data.4 }} {{ data.5 }} {{ data.6 }}"> </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4"><input type="submit" name="submit" value="Submit"></td>
+                </tr>
+            </tfoot>
+        </table>
+    </form>
+    {% else %}
+    <h1>No Samples to Be Collected</h1>
+    {% endif %}
+    {% if Sample_Collected|length > 0 %}
+    <h2>Sample Collected</h2>
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Sample</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in Sample_Collected %}
+                <tr>
+                    <td>{{ data.0 }}</td>
+                    <td>{{ data.2 }}</td>
+                    <td>{{ data.1 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <h1>No Samples Collected</h1>
+    {% endif %}
+</div>
+</body>
+</html>

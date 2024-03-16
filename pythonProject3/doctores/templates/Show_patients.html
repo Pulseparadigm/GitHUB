@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/stat/Show_patients.css">
+</head>
+<body>
+
+<!-- Check if there are any patient appointments -->
+{% if patient|length == 0 %}
+    <h1>No Appointments</h1>
+{% else %}
+    <table>
+        <thead>
+            <tr>
+                <th>Data 1</th> <!-- Replace Data 1, Data 2, etc., with appropriate headings -->
+                <th>Data 2</th>
+                <th>Data 3</th>
+                <th>Data 4</th>
+                <th>Data 5</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in patient %}
+                <tr>
+                    <td>{{ data.1 }}</td>
+                    <td>{{ data.2 }}</td>
+                    <td>{{ data.3 }}</td>
+                    <td>{{ data.4 }}</td>
+                    <td>{{ data.5 }}</td>
+                    <td><a href="test/{{ data.0 }}">Show Details</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+</body>
+</html>

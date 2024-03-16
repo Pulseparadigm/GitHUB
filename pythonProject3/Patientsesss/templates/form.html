@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Patient Registration</title>
+    <link rel="stylesheet" href="/stat/form.css">
+</head>
+<body>
+    <h1>Hello Patient, please register</h1>
+    <form action="Registration_Done" method='post'>
+        {% csrf_token %}
+        Enter your name: <input type="text" name="name"><br>
+        Enter your Date of birth: <input type="text" name="dob"><br>
+        Enter your phone number: <input type="text" name="phone"><br>
+        Enter your address: <input type="text" name="adress"><br>
+        Enter your Email: <input type="text" name="email"><br>
+        Enter your medical history: <input type="text" name="medical_history"><br>
+        Enter your password: <input type="password" name="password"><br>
+        Retype your password: <input type="password" name="password2"><br>
+
+         {% for message in messages %}
+            {{message}}
+            {% endfor %}
+        <input type="submit">
+    </form>
+</body>
+</html>

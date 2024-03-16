@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0A192F;
+    color: #CAD3E2;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.8;
+    text-align: center;
+    padding: 20px;
+}
+
+.navbar ul {
+    list-style-type: none;
+    background-color: #112240;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar li {
+    display: inline;
+    margin: 0 20px;
+}
+
+.navbar a {
+    color: #64FFDA;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #8892B0;
+    background-color: #12283a;
+}
+
+form {
+    margin: 40px auto; /* Increased margin for more space */
+    width: 90%;
+    max-width: 500px;
+}
+
+table {
+    width: 90%;
+    margin: 40px auto; /* Increased margin for more space */
+    border-collapse: separate; /* Adjusted for spacing */
+    border-spacing: 0 15px; /* Adds space between rows */
+}
+
+th, td {
+    font-family: 'Poppins', sans-serif;
+    color: #8892B0;
+    padding: 12px;
+    border: 1px solid #233554;
+    text-align: left;
+}
+
+thead {
+    background-color: #112240;
+    border-radius: 5px; /* Added for rounded corners on table header */
+}
+
+tr:nth-child(even) {
+    background-color: #0E1A2B; /* Slightly lighter for contrast */
+}
+
+a {
+    color: #64FFDA;
+    text-decoration: none;
+    padding: 5px; /* Added padding for better clickability */
+    border-radius: 5px; /* Rounded corners for links */
+}
+
+a:hover {
+    color: #8892B0;
+    background-color: #12283a; /* Background highlight for hover */
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+input[type="text"], input[type="submit"] {
+    margin-top: 20px; /* Uniform spacing */
+    margin-bottom: 30px; /* Increased spacing */
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px; /* Increased padding for better input visibility */
+    border-radius: 4px;
+    border: 1px solid #233554;
+    background-color: #112240;
+    color: #CAD3E2;
+    font-size: 1rem; /* Adjusted font size for readability */
+}
+
+input[type="submit"] {
+    padding: 15px; /* Increased padding for a larger click area */
+    background-color: #64FFDA;
+    color: #0A192F;
+    font-size: 1.1rem; /* Slightly larger font size */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Added transform for feedback */
+}
+
+input[type="submit"]:hover {
+    background-color: #52C9B3;
+    transform: translateY(-2px); /* Slight lift effect */
+}

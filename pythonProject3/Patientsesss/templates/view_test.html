@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Information</title>
+    <link rel="stylesheet" href="/stat/view_test.css">
+</head>
+<body>
+
+<h1>Available Tests</h1>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Test Type</th>
+            <th>Test Name</th>
+            <th>Order Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for test in tests %}
+        <tr>
+            <td>{{ test.0 }}</td>
+            <td>{{ test.1 }}</td>
+            <td><a href="order_test/{{ test.2 }}">Order Now</a></td>
+        </tr>
+        {% endfor %}
+
+        {% for test in test_ordered %}
+        <tr>
+            <td>{{ test.0 }}</td>
+            <td>{{ test.1 }}</td>
+            <td>Already Ordered</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>

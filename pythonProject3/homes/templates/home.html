@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>User Identification</title>
+
+    <link rel="stylesheet" href="/stat/home.css">
+
+</head>
+
+<body>
+
+
+
+    <div class="container">
+        <h1>Welcome. Please help us to define who you are as a user.</h1>
+
+        <form action="patient" class="user-form">
+            <h2>Are you a patient?</h2>
+            <input type="submit" value="Yes, I'm a Patient">
+        </form>
+
+        <form action="doctor" method="get" class="user-form">
+            <h2>Are you a Doctor?</h2>
+            <input type="submit" value="Yes, I'm a Doctor">
+        </form>
+
+        <form action="Nurse" class="user-form"> <!-- Lowercased the action to maintain consistency -->
+            <h2>Are you a Nurse?</h2>
+            <input type="submit" value="Yes, I'm a Nurse">
+        </form>
+
+        <form action="SampleCollector" class="user-form"> <!-- Lowercased the action to maintain consistency -->
+            <h2>Are you a SampleCollector?</h2>
+            <input type="submit" value="Yes, I'm a SampleCollector">
+        </form>
+
+        <form action="pathologist" class="user-form"> <!-- Lowercased the action to maintain consistency -->
+            <h2>Are you a Pathologist?</h2>
+            <input type="submit" value="Yes, I'm a Pathologist">
+        </form>
+    </div>
+     <script>
+        let index = 0;
+
+        function slideImages() {
+            const images = document.querySelector('.carousel-images');
+            const totalImages = images.children.length;
+            index = (index + 1) % totalImages;
+            const imageWidth = images.children[0].clientWidth;
+            images.style.transform = `translateX(${-index * imageWidth}px)`;
+        }
+
+        setInterval(slideImages, 3000);
+    </script>
+
+<div class="carousel">
+
+
+           <img src="photo/image1.webp" alt="Image can't load">
+            <img src="photo/2.jpeg" alt="Image can't load">
+            <img src="photo/3.jpeg" alt="Image can't load">
+            <img src="photo/4.jpeg" alt="Image can't load">
+
+            <img src="/photo/5.webp" alt="Image can't load">
+
+    </div>
+
+</body>
+
+</html>

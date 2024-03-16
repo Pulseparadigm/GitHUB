@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/stat/doctor_loginpage.css">
+</head>
+<body>
+
+    <h1>Please Provide Your Login Information</h1>
+
+
+    <form action="Login_verify" method="post">
+           {% csrf_token %}
+
+        <label for="email">Your Email:</label>
+        <input type="email" name="email" id="email" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required><br>
+
+        <input type="submit" value="Log In">
+
+         {% for message in messages %}
+            {{message}}
+            {% endfor %}
+    </form>
+
+    <p>Don't have an account? Register one below. It's free!</p>
+    <a href="/doctor/">Register Account</a>
+
+</body>
+</html>

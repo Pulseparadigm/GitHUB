@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample Collector Data</title>
+    <link rel="stylesheet" href="/stat/sample_collector_home.css">
+</head>
+<body>
+<div class="container">
+    <div class="sample-data">
+        {% for data in sample_collector %}
+            <p> <h3>Name :</h3>{{ data.1 }} </p>
+        <br>
+        <p><h3>Email :</h3>{{ data.3 }}</p>
+        {% endfor %}
+    </div>
+    <div class="login-redirect">
+        <a href="sample">Sample List</a>
+    </div>
+</div>
+</body>
+</html>

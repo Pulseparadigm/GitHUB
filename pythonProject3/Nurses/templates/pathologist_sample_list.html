@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<link rel="stylesheet" href="/stat/pathologist_sample_list.css">
+<form action="pathologist_took_order" method='POST'>
+    {% csrf_token %}
+    <!-- CSRF token for security -->
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>order</th>
+
+
+            <!-- Column name updated -->
+        </tr>
+
+        {% for data in pathologist %}
+            <tr>
+                <td>{{ data.1 }}</td> <!-- Display Test Type -->
+
+                <td><input type="checkbox" name="ordered_ID" value="{{ data.0}}"></td> <!-- Checkbox for selecting the row -->
+
+
+            </tr>
+        {% endfor %}
+
+
+    </table>
+      <input type="submit" name ="order" value="Submit">
+
+</form>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample Collector Orders</title>
+    <link rel="stylesheet" href="/stat/sample_collector.css">
+</head>
+<body>
+ {% if sample_collector|length > 0 %}
+<form action="sample_collector_took_order" method="POST">
+    {% csrf_token %}
+   
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Order</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in sample_collector %}
+                <tr>
+                    <td>{{ data.1 }}</td> 
+                    <td><input type="checkbox" name="ordered_ID" value="{{ data.0 }}"></td> 
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <input type="submit" name="order" value="Submit" style="margin-top: 10px;">
+    {% else %}
+    <h2>No Sample Collector Availabe</h2>
+    {% endif %}
+
+</form>
+</body>
+</html>

@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0A192F; /* Navy blue */
+    color: #CAD3E2; /* Light gray */
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Enable vertical scroll */
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background-color: #112240; /* Slightly darker navy blue for container background */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.sample-data p {
+    color: #CAD3E2; /* Light gray */
+    margin-bottom: 10px; /* Space between paragraphs */
+    font-size: 1.2rem;
+}
+
+.login-redirect a {
+    display: inline-block;
+    color: #64FFDA; /* Teal color for links */
+    text-decoration: none;
+    margin-top: 20px; /* Space above the link */
+    font-size: 1.2rem;
+}
+
+.login-redirect a:hover {
+    text-decoration: underline; /* Underline on hover for better feedback */
+}

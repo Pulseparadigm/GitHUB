@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nurse Sample Collection</title>
+    <link rel="stylesheet" href="/stat/nurse_test_collected.css">
+</head>
+<body>
+    {% if nurse_sample_collected|length > 0 %}
+        <h1>Tests to Collect</h1>
+        <form action="/Nurse/send_to_lab" method="POST">
+            {% csrf_token %}
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Test Type</th>
+                        <th>Test Name</th>
+                        <th>Patient Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for data in nurse_sample_collected %}
+                        <tr>
+                            <td>{{ data.0 }}</td>
+                            <td>{{ data.1 }}</td>
+                            <td>{{ data.3 }}</td>
+                            <td>
+
+                                <label>
+                                        <h3>Select </h3><input type="checkbox" name="order_list" value="{{ data.4 }} {{ data.2 }} {{ sample.0.5 }}">
+
+                                    </label><br>
+                                {% endfor %}
+                            </td>
+
+                        </tr>
+
+
+                </tbody>
+            </table>
+            <input type="submit" value="Submit">
+        </form>
+    {% else %}
+        <h1>No Tests to Collect</h1>
+    {% endif %}
+    <a href="show_order">Show Orders</a>
+</body>
+</html>

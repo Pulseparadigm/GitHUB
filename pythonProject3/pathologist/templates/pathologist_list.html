@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample Collection</title>
+    <link rel="stylesheet" href="/stat/pathologist_list.css">
+</head>
+<body>
+    {% if sample|length > 0 %}
+    <h1>Tests Collected</h1>
+    <h2>Needed to Deliver</h2>
+    <!-- The form is now correctly placed to include the table and submit button -->
+    <form action="generate_report" method='POST'>
+        {% csrf_token %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Sample Name</th>
+                    <th>Patient Name</th>
+                    <th>Order</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in sample %}
+                <tr>
+                    <td>{{ data.0 }}</td>
+                    <td>{{ data.1 }}</td>
+                    <td>
+                        <input type="checkbox" name="order_list" value="{{ data.3 }} {{ data.2 }}">
+
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+         Report: <input type="text" name="report">
+        <input type="submit" value="Submit">
+    </form>
+    {% else %}
+    <h1>No Samples to Check</h1>
+    {% endif %}
+</body>
+</html>

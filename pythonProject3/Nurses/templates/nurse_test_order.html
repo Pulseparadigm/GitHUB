@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Tests</title>
+    <link rel="stylesheet" href="/stat/nurse_test_order.css">
+</head>
+<body>
+
+<form action="give_order" method="POST">
+    {% csrf_token %}
+    <table border="1">
+        <thead>
+            <tr>
+                {% if nurse|length > 0 %}
+                <th>Test Type</th>
+                <th>Test Name</th>
+
+                <th>Order Samples</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in nurse %}
+                <tr>
+                    <td>{{ data.0 }}</td>
+                    <td>{{ data.1 }}</td>
+                    {% for samp in sample %}
+
+                        <td>{{samp.1}}<br>
+
+                        <input type="checkbox" name="order_list" value="{{ data.4 }} {{ data.2 }} {{samp.0}}">
+                    </td>
+
+                    {% endfor %}
+                     <td><input type="submit" value="Submit"></td>
+                </tr>
+
+            {% endfor %}
+        </tbody>
+
+    </table>
+     <input type="submit" value="Submit">
+    <br>
+    <br>
+    <p></p>
+    {% else %}
+    <h2>No Orders to Send</h2>
+    {% endif %}
+
+    {% if nurse_test_ordered|length > 0 %}
+
+    <h2>Test Ordered</h2>
+
+     <table border="1">
+        <thead>
+            <tr>
+                <th>Test Type</th>
+                <th>Test Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in nurse_test_ordered %}
+                <tr>
+                    <td>{{ data.0 }}</td>
+                    <td>{{ data.1 }}</td>
+         {% endfor %}
+                </tr>
+        </tbody>
+
+    </table>
+</form>
+{% else %}
+    <h2>No Orders Need to be Collected</h2>
+    {% endif %}
+<a href="nurse_test_collected"><h2>Test Collected</h2></a>
+</body>
+</html>

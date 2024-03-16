@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/stat/nurse_home.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="/nurse/">Home</a>
+            <a href="show_order">Test Orders</a>
+            
+        </div>
+    </nav>
+    
+<div class="content">
+    {% for data in nurse %}
+    <div class="nurse-info">
+        <h2>Name: {{ data.1 }}</h2>
+        <p>Email: {{ data.3 }}</p>
+        <p>Department: {{ data.4 }}</p>
+        <p>Phone No.: {{ data.5 }}</p>
+        <p>Salary: {{ data.6 }}</p>
+        <p>Schedule: {{ data.7 }}</p>
+        <p>On Vacation: {{ data.8 }}</p>
+        <p>Tests Ordered: {{ data.9 }}</p>
+        <p>Tests Pending: {{ data.10 }}</p>
+        <a href="show_order">Show Test Orders</a>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>

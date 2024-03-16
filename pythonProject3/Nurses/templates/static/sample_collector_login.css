@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0A192F;
+    color: #CAD3E2;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+}
+
+.form-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #112240;
+    border-radius: 8px;
+}
+
+.post-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-messages p {
+    color: #FF6B6B; /* Adjust if you have a specific color in mind for messages */
+}
+
+.save-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #64FFDA;
+    color: #0A192F;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.save-button:hover {
+    background-color: #52ECCD;
+    transform: translateY(-3px);
+}
+
+.registration-redirect {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.registration-redirect p,
+.registration-redirect a {
+    color: #8892B0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+}
+
+.registration-redirect a {
+    color: #64FFDA;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.registration-redirect a:hover {
+    color: #52ECCD;
+}
