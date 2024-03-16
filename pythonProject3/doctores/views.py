@@ -22,7 +22,12 @@ def index(request):
 
         if doctor.is_valid():
 
-            doctor.save()
+            with connection.cursor() as cursor:
+                cursor.execute(f"""
+                Insert into doctor (firstname, lastname, email, password, img)
+                 values("{request.POST['firstname']}","{request.POST['lastname']}","{request.POST['email']}","{request.POST['password']}"
+                 ,"{request.POST['img']}")
+                 """)
 
             with connection.cursor() as cursor:
                 email=request.POST['email']
