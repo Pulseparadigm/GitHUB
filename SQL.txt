@@ -1,0 +1,624 @@
+-----FUNCTION-----------
+--------1
+
+
+CREATE OR REPLACE FUNCTION AvgSalarySpentAllNurses
+RETURN NUMBER IS
+  total_salary_spent NUMBER := 0;
+  total_years NUMBER := 0;
+  current_year NUMBER := EXTRACT(YEAR FROM SYSDATE);
+BEGIN
+  FOR rec IN (
+    SELECT SALARY, JOIN_DATE
+    FROM NURSE
+  ) LOOP
+    total_salary_spent := total_salary_spent + rec.SALARY * (current_year - EXTRACT(YEAR FROM rec.JOIN_DATE));
+    total_years := total_years + (current_year - EXTRACT(YEAR FROM rec.JOIN_DATE));
+  END LOOP;
+
+  -- Avoid division by zero by checking if total_years is greater than 0
+  IF total_years > 0 THEN
+    RETURN total_salary_spent / total_years;
+  ELSE
+    RETURN 0;
+  END IF;
+END;
+
+
+--------2
+
+CREATE OR REPLACE FUNCTION find_nurse_id(patientID IN NUMBER)
+RETURN NUMBER IS
+    nurseID NUMBER;
+BEGIN
+    -- Look up a nurse_ID based on patient_ID
+    SELECT nurse_ID INTO nurseID
+    FROM nurse_patient_test
+    WHERE patient_ID = patientID
+    AND ROWNUM <= 1;
+   
+    -- If nurseID is not found, an exception will be raised, and handled below
+    RETURN nurseID;
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        -- If no nurseID is found, return 0
+        RETURN 0;
+END;
+
+----------3
+
+CREATE OR REPLACE FUNCTION get_available_nurse_id(patientID in number) RETURN NUMBER is
+
+     availableNurseID NUMBER;
+		 Begin
+
+    -- Look up an available nurse ID
+    SELECT id INTO availableNurseID
+    FROM nurse
+    WHERE on_vacation = 'NO'
+    and rownum <=1;
+
+    -- Return the available nurse ID if found, otherwise return 0
+     RETURN availablenurseID;
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        -- If no nurseID is found, return 0
+        RETURN 0;
+   
+END;
+
+
+-------4
+CREATE OR REPLACE FUNCTION GetMaxSalaryNurses (nurse_count IN NUMBER)
+RETURN NUMBER IS
+  max_salary NUMBER;
+BEGIN
+  SELECT MAX(SALARY) INTO max_salary
+  FROM (SELECT SALARY FROM NURSE ORDER BY SALARY DESC)
+  WHERE ROWNUM <= nurse_count;
+
+  RETURN max_salary;
+END;
+
+------5
+
+CREATE OR REPLACE FUNCTION GetRecentAppointments (doctor_id IN NUMBER)
+RETURN NUMBER IS
+  appointment_count NUMBER;
+BEGIN
+  SELECT COUNT(*) INTO appointment_count
+  FROM APPOINTMENT
+  WHERE DOCTOR_ID_ID = doctor_id
+    AND DATE_AND_TIME BETWEEN SYSDATE - 7 AND SYSDATE;
+   
+  RETURN appointment_count;
+END;
+
+-------6
+CREATE OR REPLACE FUNCTION GetTotalAppointments
+RETURN NUMBER IS
+  total_appointments NUMBER;
+BEGIN
+  SELECT COUNT(*) INTO total_appointments
+  FROM APPOINTMENT;
+ 
+  RETURN total_appointments;
+END;
+
+-----------END---------------
+
+----------Procedure----------
+
+-------1
+CREATE OR REPLACE PROCEDURE Delete_from_Temporary_sample 
+is
+BEGIN
+    DELETE  from Temporary_sample 
+		commit;
+END;
+
+------2
+CREATE OR REPLACE PROCEDURE delete_sample (
+    p_pathologist_id IN PATHOLOGIST_PATIENT_SAMPLE.PATHOLOGIST_ID%TYPE,
+    p_patient_id     IN PATHOLOGIST_PATIENT_SAMPLE.PATIENT_ID%TYPE,
+    p_sample_id      IN PATHOLOGIST_PATIENT_SAMPLE.SAMPLE_ID%TYPE
+) AS
+BEGIN
+    DELETE FROM PATHOLOGIST_PATIENT_SAMPLE
+    WHERE PATHOLOGIST_ID = p_pathologist_id
+      AND PATIENT_ID = p_patient_id
+      AND SAMPLE_ID = p_sample_id;
+     
+    COMMIT;
+EXCEPTION
+    WHEN OTHERS THEN
+        ROLLBACK;
+        RAISE;
+END delete_sample;
+
+-------3
+CREATE OR REPLACE PROCEDURE DeleteTemporaryOrders is
+BEGIN
+    -- Disable foreign key checks temporarily
+    DELETE FROM "TEMPORARY_ORDERS";
+		commit;
+END;
+------4
+CREATE OR REPLACE PROCEDURE insert_into_pathologist_patient_sample (
+     pathologistID IN NUMBER,
+     patientID IN number,
+     sampleID iN number
+) is
+BEGIN
+    INSERT INTO pathologist_patient_sample (pathologist_ID, patient_ID, sample_ID)
+    VALUES (pathologistID, patientID, sampleID);
+END;
+-----5
+CREATE OR REPLACE Procedure insert_into_report(
+    patientID IN INT,
+    sampleID IN INT,
+    handReport IN NVARCHAR2
+) is
+BEGIN
+    INSERT INTO report ( Patient_ID, sample_ID, hand_report)
+    VALUES (patientID, sampleID, handReport);
+
+END ;
+-----6
+CREATE OR REPLACE PROCEDURE insert_into_Temporary_sample (
+    testID IN  NUMBER,
+    patientID  IN NUMBER,
+     sampleID IN number
+)is
+BEGIN
+    INSERT INTO Temporary_sample (test_ID, Patient_ID, Sample_ID)
+    VALUES (testID, patientID, sampleID);
+END;
+-----7
+CREATE OR REPLACE PROCEDURE insert_pathologist_patient_sample (
+     pathologistID IN NUMBER,
+    patientID IN  NUMBER,
+    sampleID IN  Number
+) is
+BEGIN
+    INSERT INTO pathologist_patient_sample (pathologist_ID, patient_ID, sample_ID)
+    VALUES (pathologistID, patientID, sampleID);
+END;
+-----8
+CREATE OR REPLACE PROCEDURE insert_report (
+    
+    patientID IN NUMBER,
+    sampleID IN NUMBER
+    
+) IS
+BEGIN
+    INSERT INTO report ( Patient_ID, sample_ID)
+    VALUES ( patientID, sampleID);
+    
+    COMMIT; -- Commit the transaction
+EXCEPTION
+    WHEN OTHERS THEN
+        ROLLBACK; -- Rollback the transaction if an error occurs
+
+END ;
+------9
+CREATE OR REPLACE PROCEDURE InsertIntoNursePatientTest(
+     nurseID in Number,
+     patientID IN NUmber,
+     testID IN number
+) is
+BEGIN
+    INSERT INTO nurse_patient_test (nurse_ID, patient_ID, test_ID)
+    VALUES (nurseID, patientID, testID);
+END;
+-------10
+CREATE OR REPLACE PROCEDURE InsertIntoSample_Collector_Nurse_Patient_Test(
+     nurse_id_val in NUMBER,
+     patient_id_val  in NUMBER,
+     test_id_val in number,
+     sample_collector_id_val in number,
+		 sample_ID in number
+) is
+BEGIN
+    -- Insert data into sample_collector_nurse_patient_test table
+    INSERT INTO sample_collector_nurse_patient_test (sample_collector_id, nurse_id, patient_id, test_id,sample_id)
+    VALUES (sample_collector_id_val, nurse_id_val, patient_id_val, test_id_val,sample_ID);
+END;
+--------11
+CREATE OR REPLACE PROCEDURE InsertIntoSampleCollectorNursePatientTest(
+     nurse_id_val in NUMBER,
+     patient_id_val  in NUMBER,
+     sample in number,
+     sample_collector_id_val in number
+) is
+BEGIN
+    -- Insert data into sample_collector_nurse_patient_test table
+    INSERT INTO sample_collector_nurse_patient_test (sample_collector_id, nurse_id, patient_id, sample_ID)
+    VALUES (sample_collector_id_val, nurse_id_val, patient_id_val, sample);
+END;
+--------12
+CREATE OR REPLACE PROCEDURE InsertSampleCollector(
+     collector_name_val in VARCHAR2,
+     email_val in VARCHAR2,
+     password_val  in VARCHAR2
+) is
+BEGIN
+    -- Insert values into samplecollector table
+    INSERT INTO sample_collector (Collectorname, email, password)
+    VALUES (collector_name_val, email_val, password_val);
+END;
+--------13
+CREATE OR REPLACE PROCEDURE InsertTemporaryOrder(
+     test_id IN INT,
+     patient_id IN INT,
+		 sample_ID in int
+) is
+BEGIN
+    INSERT INTO temporary_orders (test_id, patient_id,sample_id)
+    VALUES (test_id, patient_id,sample_ID);
+END;
+------14
+CREATE OR REPLACE PROCEDURE update_status_to_collected (
+     testID in NUMBER,
+     patientID in NUMBER,
+     nurseID in NUMBER,
+     sampleID in NUMBER
+)is
+BEGIN
+    UPDATE sample_collector_nurse_patient_TEST
+    SET status = 'COLLECTED'
+    WHERE test_ID = testID
+    AND patient_ID = patientID
+    AND NURSE_ID = nurseID
+    AND sample_ID = sampleID;
+END;
+------15
+CREATE OR REPLACE PROCEDURE update_status_to_sent (
+     testID in NUMBER,
+     patientID in NUMBER,
+     nurseID in NUMBER,
+     sampleID in NUMBER
+)is
+BEGIN
+    UPDATE sample_collector_nurse_patient_TEST
+    SET status = 'SENT'
+    WHERE test_ID = testID
+    AND patient_ID = patientID
+    AND NURSE_ID = nurseID
+    AND sample_ID = sampleID;
+END;
+
+-------16
+CREATE PROCEDURE UpdatePatient (
+     p_id  in INT,
+     p_name in VARCHAR(255),
+     p_address in VARCHAR(255),
+     p_phone in INT,
+     p_medical_history in VARCHAR(255),
+     p_password in VARCHAR(255)
+) is
+BEGIN
+
+    DECLARE v_name VARCHAR(255);
+    DECLARE v_address VARCHAR(255);
+    DECLARE v_phone INT;
+    DECLARE v_medical_history VARCHAR(255);
+    DECLARE v_password VARCHAR(255);
+    SET v_name = p_name;
+    SET v_address = p_address;
+    SET v_phone = p_phone;
+    SET v_medical_history = p_medical_history;
+    SET v_password = p_password;
+
+    UPDATE patient 
+    SET 
+        name = v_name,
+        address = v_address,
+        phone = v_phone,
+        medical_history = v_medical_history,
+        password = v_password 
+    WHERE 
+        id = p_id;
+END
+/
+--------17
+CREATE PROCEDURE DeleteDoctorPatientTest (
+     p_Doctor_ID in INT,
+     p_Patient_ID in INT,
+     p_test_id in INT
+) is
+BEGIN
+    -- Delete the record from Doctor_patient_test table
+    DELETE FROM Doctor_patient_test 
+    WHERE 
+        Doctor_ID = p_Doctor_ID 
+        AND Patient_ID = p_Patient_ID 
+        AND test_id = p_test_id;
+END
+/
+------18
+CREATE PROCEDURE InsertNurse (
+     p_name in VARCHAR(255),
+     p_password in VARCHAR(255),
+     p_email in VARCHAR(255),
+     p_department in VARCHAR(255),
+     p_contactinfo in INT,
+     p_salary in DECIMAL(10,2)
+)is
+BEGIN
+    -- Insert a new record into the NURSE table
+    INSERT INTO NURSE (NAME, PASSWORD, EMAIL, DEPARTMENT, CONTACTINFO, SALARY, JOIN_DATE) 
+    VALUES (p_name, p_password, p_email, p_department, p_contactinfo, p_salary, SYSDATE);
+END
+
+
+---------------END-------------------
+
+---------TRIGGER---------------------
+
+-------1
+	CREATE TRIGGER set_status_before_insert
+BEFORE INSERT ON sample_collector_nurse_patient_TEST
+FOR EACH ROW
+BEGIN
+    :NEW.Status := 'ORDERED';
+END;
+/
+-------2
+CREATE OR REPLACE TRIGGER generate_id_before_insert
+BEFORE INSERT ON report
+FOR EACH ROW
+BEGIN
+    SELECT report_seq.NEXTVAL INTO :NEW.ID FROM DUAL;
+END;
+/
+
+-------3
+CREATE OR REPLACE TRIGGER sample_collector_trigger
+BEFORE INSERT ON Sample_Collector
+FOR EACH ROW
+BEGIN
+    SELECT sample_collector_seq.NEXTVAL INTO :NEW.id FROM dual;
+END;
+/
+-------4
+CREATE OR REPLACE TRIGGER nurse_id_trigger
+BEFORE INSERT ON Nurse
+FOR EACH ROW
+BEGIN
+    SELECT nurse_seq.nextval INTO :NEW.id FROM dual;
+END;
+
+
+-------5
+CREATE OR REPLACE TRIGGER trg_before_insert_nurse
+BEFORE INSERT
+ON NURSE
+FOR EACH ROW
+BEGIN
+  :NEW.ON_VACATION := 'NO';
+  :NEW.TEST_ORDERED := 0;
+  :NEW.TESTS_PENDING := 0;
+END;
+/
+
+
+-------6
+CREATE OR REPLACE TRIGGER patient_id_trigger
+BEFORE INSERT ON Patient
+FOR EACH ROW
+BEGIN
+    SELECT patient_seq.nextval INTO :NEW.id FROM dual;
+END;
+
+---------7
+CREATE OR REPLACE TRIGGER doctor_id_trigger
+BEFORE INSERT ON DOCTOR
+FOR EACH ROW
+BEGIN
+    SELECT doc_seq.nextval INTO :NEW.id FROM dual;
+END;
+
+---------8
+CREATE OR REPLACE TRIGGER BEFORE_INSERT_APPOINTMENT
+ BEFORE INSERT ON "APPOINTMENT" REFERENCING OLD AS "OLD" NEW AS "NEW" 
+FOR EACH ROW 
+BEGIN
+SELECT
+counter_increase.NextVAL INTO :new.ID
+from dual;
+end;
+
+
+-----------END-------------
+
+------------SQL QUERIES------------
+
+------------1
+select email from patient where email='{email}'
+
+---------2
+select * from patient where email='{email}'
+---------3
+select id from patient where email='{email}'
+--------4
+select * from doctor
+--------5
+select * from doctor where firstname Like '%{name}%' Or lastname Like '%{name}%' 
+                          or Concat(firstname, lastname) like '%{name}%';
+-------6
+select * from patient where id={id};'
+-------7
+select id from patient where password=\'{password}\' and email=\'{email}\';
+--------8
+select * from patient where email=\'{email}\' and password=\'{password}\';
+-------9
+select * from patient where id={registration}
+-------10
+select a.date_and_time,
+        (select (firstname ||' '||lastname) from doctor where docid=a.doctor_ID_ID),
+        (select email from doctor where docid=a.doctor_ID_ID) 
+        from appointment a where a.patient_ID_id={id}
+-------11
+select lastname from doctor where docid={docID}
+------12
+select name from patient where id={patientID}
+------13
+select ID from appointment where patient_ID_ID={patientID} and doctor_ID_ID={docID}
+------14
+Insert into Appointment 
+                (date_and_time,Doctor_ID_ID,patient_ID_ID,visit)
+                 values('{date}','{docID}','{patientID}','{purpose}')
+------15
+select  Date_and_Time ,
+            (select (d1.firstname|| ' '||d1.lastname)   from doctor d1 where d1.docID=a.Doctor_ID_ID) 
+             from Appointment a where a.Patient_ID_ID='{patientID}
+-------16
+select test_name,test_type,id  from Test t
+         where  t.ID in 
+         (select test_id from Doctor_patient_test t1 where t1.patient_ID={patient_ID} and t.id=t1.test_id) 
+         minus 
+         (select test_name,test_type,id from test t where 
+          EXISTS
+           (select test_id from Nurse_patient_Test where t.id=test_id))
+-------17
+select test_name,test_type,id  from Test t 
+        where  t.ID in
+         (select test_id from Doctor_patient_test t1 where t1.patient_ID={patient_ID} and t.id=t1.test_id)
+          minus
+           (select test_name,test_type,id from test t where 
+           NOT EXISTS
+            (select test_id from Nurse_patient_Test where t.id=test_id))
+--------18
+Insert into doctor (firstname, lastname, email, password, img)
+                 values("{request.POST['firstname']}","{request.POST['lastname']}","{request.POST['email']}","{request.POST['password']}"
+                 ,"{request.POST['img']}")
+--------19
+select * from doctor where email=\'{email}\'
+--------20
+select docid from doctor where email=\'{email}\'
+--------21
+SELECT *
+                        FROM patient
+                        WHERE id IN (SELECT Patient_ID_ID FROM appointment WHERE doctor_ID_ID = {Doctor_ID});
+-------22
+select * from doctor_patient_test where Patient_ID={id}
+--------23
+select docid from doctor where password=\'{password}\' and email=\'{email}\'
+--------24
+select * from doctor where email=\'{email}\' and password=\'{password}\'
+-------25
+(SELECT test_name, test_type, id FROM Test) 
+        minus 
+        (SELECT TEST_NAME, test_type, id FROM Test t JOIN 
+        Doctor_patient_test D ON t.id = D.test_id WHERE patient_ID = {id} AND Doctor_id = {Doctor_ID})
+         minus 
+         (select Test_name,test_type,id
+         from test
+         join 
+         Sample_Collector_Nurse_Patient_TEST
+         ON
+         patient_ID={id}
+	)
+
+-------26
+SELECT TEST_NAME,test_type,id FROM Test t
+ JOIN Doctor_patient_test D
+ ON 
+ t.id =D.test_id
+ where patient_ID={id} and Doctor_id={Doctor_ID}
+
+------27
+Insert into Doctor_patient_test values({Doctor_ID},{Patient_ID},{id})
+--------28
+select (select name from patient
+         where id=r.patient_ID),(select name from sample where id=r.sample_ID),Hand_report 
+         from report  r where 
+        patient_ID={id}
+--------29
+select * from nurse where name=\'{email}\'
+-------30
+select id from nurse where email='{request.POST['email']}
+-------40
+SELECT t.test_type,t.test_name,p.id,p.name, t.id
+                FROM NURSE_PATIENT_TEST npt
+                    JOIN PATIENT p ON npt.PATIENT_ID = p.ID
+                    Join test t on npt.test_ID=t.id
+                WHERE nurse_ID={nurse_id} and NOT EXISTS (
+                SELECT 1
+                FROM SAMPLE_COLLECTOR_NURSE_PATIENT_TEST scnpt
+                WHERE scnpt.NURSE_ID = npt.NURSE_ID
+                 AND scnpt.PATIENT_ID = npt.PATIENT_ID
+                AND scnpt.TEST_ID = npt.TEST_ID)
+-------41
+SELECT t.test_type,t.test_name,p.id,p.name, t.id
+                        FROM NURSE_PATIENT_TEST npt
+                        JOIN PATIENT p ON npt.PATIENT_ID = p.ID
+                        Join test t on npt.test_ID=t.id
+                        WHERE nurse_ID={nurse_id} and  EXISTS (
+                        SELECT 1
+                         FROM SAMPLE_COLLECTOR_NURSE_PATIENT_TEST scnpt
+                        WHERE scnpt.NURSE_ID = npt.NURSE_ID
+                        AND scnpt.PATIENT_ID = npt.PATIENT_ID
+                        AND scnpt.TEST_ID = npt.TEST_ID
+		                and scnpt.status='ORDERED')
+-------42
+select * from sample_collector
+------43
+select *  from temporary_orders
+-----44
+SELECT t.test_name,s.name,p.id,p.name, t.id,s.id
+                        FROM sample_collector_nurse_patient_test npt
+                        JOIN PATIENT p ON npt.PATIENT_ID = p.ID
+                        Join test t on npt.test_ID=t.ID
+                        join sample s on s.id=npt.sample_ID
+                        WHERE npt.nurse_ID={nurse_id} and 
+                        npt.status='COLLECTED'
+-----45
+Select id from
+        sample_collector_nurse_patient_test
+-----46
+select * 
+            from pathologist
+            where field IN
+            (select name from sample
+            where id='{sample}'
+            )
+------47
+select password from pathologist
+               where email='{email}'
+------48
+select s.name,(select name from patient where ps.patient_ID=patient.ID),
+        ps.patient_ID,ps.Sample_ID from
+        pathologist_patient_sample ps
+        join sample s
+        on ps.sample_id=s.id
+        where ps.pathologist_id={id}
+------49
+sample_ID,select patient_ID,(select name from patient p where p.id=r.patient_ID ),
+    (select name from sample s where s.id=r.sample_ID )
+    where patient_ID={patient_ID[0]}
+------50
+select password from sample_Collector 
+               where email='{email}'
+------51
+SELECT p.name,p.adress,s.name,sp.patient_id,sp.sample_id,sp.test_ID,sp.nurse_ID  as sample_name
+                      FROM sample_collector_nurse_patient_test sp
+                      JOIN patient p ON sp.patient_ID = p.ID
+                      JOIN sample s ON sp.sample_ID=s.ID
+                      WHERE sp.sample_collector_ID = {samplecollector_ID}
+                      and
+                      sp.status='ORDERED'
+------52
+SELECT p.name,p.adress,s.name,p.id,s.id  as sample_name,sp.test_ID,sp.nurse_ID
+                      FROM sample_collector_nurse_patient_test sp
+                      JOIN patient p ON sp.patient_ID = p.ID
+                      JOIN sample s ON sp.sample_ID=s.ID
+                      WHERE sp.sample_collector_ID = {samplecollector_ID}
+                      and
+                      sp.status='COLLECTED'
+
+-------------END---------------
+
+
+
