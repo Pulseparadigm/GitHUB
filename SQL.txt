@@ -428,6 +428,16 @@ SELECT
 counter_increase.NextVAL INTO :new.ID
 from dual;
 end;
+/
+CREATE OR REPLACE TRIGGER nurse_patient_test_update_order
+BEFORE UPDATE ON Nurse_patient_test
+FOR EACH ROW
+BEGIN
+    IF :OLD.order_status = 'pending' THEN
+        :NEW.order_status := 'sent';
+    END IF;
+END;
+/
 
 
 -----------END-------------
